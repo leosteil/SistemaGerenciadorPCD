@@ -13,6 +13,7 @@ class Banco():
                        idclasse integer primary key autoincrement ,
                        classe_nome text,
                        classe_codigo text,
+                       classe_subordinacao text,
                        classe_regAbertura text,
                        classe_regDesativacao text,
                        classe_reativacao text,

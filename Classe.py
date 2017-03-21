@@ -22,7 +22,7 @@ class Classe(object):
 		try:
 			c = banco.conexao.cursor()
 
-			c.execute("insert into classe (classe_nome, classe_codigo, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "')" )
+			c.execute("insert into classe (classe_nome, classe_codigo, classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "')" )
 
 			banco.conexao.commit()
 			c.close()
