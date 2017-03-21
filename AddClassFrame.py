@@ -94,19 +94,19 @@ class AddClass:
         self.container13.pack()
 
     def submmit(self):
-       	classe = Classe()
+       	c = Classe()
 
-       	classe_nome = self.entryNome.get()
-       	classe_codigo = self.entryCodigo.get()
-       	classe_subordinacao = self.entrySubordinacao.get()
-       	classe_regAbertura = self.entryRegAbertura.get()
-       	classe_regDesativacao = self.entryRegDesativacao.get()
-       	classe_reativacao = self.entryRegAtivacao.get()
-       	classe_regMudancaNome = self.entryRegMudancaNome.get()
-       	classe_regDeslocamento = self.entryRegDeslocamento.get()
-       	classe_regExtincao = self.entryRegExtincao.get()
-       	classe_indicador = self.entryIndicador.get()
+       	c.classe_nome = self.entryNome.get()
+       	c.classe_codigo = self.entryCodigo.get()
+       	c.classe_subordinacao = self.entrySubordinacao.get()
+       	c.classe_regAbertura = self.entryRegAbertura.get()
+       	c.classe_regDesativacao = self.entryRegDesativacao.get()
+       	c.classe_reativacao = self.entryRegAtivacao.get()
+       	c.classe_regMudancaNome = self.entryRegMudancaNome.get()
+       	c.classe_regDeslocamento = self.entryRegDeslocamento.get()
+       	c.classe_regExtincao = self.entryRegExtincao.get()
+       	c.classe_indicador = self.entryIndicador.get()
 
-       	print(classe_nome, classe_reativacao, classe_codigo, classe_indicador, classe_subordinacao)
+       	#print(classe_nome, classe_reativacao, classe_codigo, classe_indicador, classe_subordinacao)
 
-       	self.lblmsg["text"] = classe.insertClasse()
+       	self.lblmsg["text"] = c.insertClasse()

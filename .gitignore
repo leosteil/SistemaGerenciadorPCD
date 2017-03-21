@@ -1,2 +1,4 @@
 *.pyc
 __pycache__
+banco.db
+read_data.py
