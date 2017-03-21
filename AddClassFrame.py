@@ -7,7 +7,7 @@ class AddClass:
         self.master = master
 
         self.container1 = tk.Frame(self.master, pady = 10)
-        self.lblCabecalho = tk.Label(self.container1, text = "Digite os dados abaixo")
+        self.lblCabecalho = tk.Label(self.container1, text = "Digite os dados abaixo", fg = "black", font = "Verdana 10 bold")
         self.lblCabecalho.pack()
         self.container1.pack()
 
@@ -101,12 +101,12 @@ class AddClass:
        	classe_subordinacao = self.entrySubordinacao.get()
        	classe_regAbertura = self.entryRegAbertura.get()
        	classe_regDesativacao = self.entryRegDesativacao.get()
-       	classe_reativicao = self.entryRegAtivacao.get()
+       	classe_reativacao = self.entryRegAtivacao.get()
        	classe_regMudancaNome = self.entryRegMudancaNome.get()
        	classe_regDeslocamento = self.entryRegDeslocamento.get()
        	classe_regExtincao = self.entryRegExtincao.get()
        	classe_indicador = self.entryIndicador.get()
 
-       	print(classe_nome, classe_reativicao, classe_codigo, classe_indicador, classe_subordinacao)
+       	print(classe_nome, classe_reativacao, classe_codigo, classe_indicador, classe_subordinacao)
 
        	self.lblmsg["text"] = classe.insertClasse()
