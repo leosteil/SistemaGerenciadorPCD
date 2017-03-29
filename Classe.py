@@ -22,9 +22,6 @@ class Classe(object):
 		try:
 			c = banco.conexao.cursor()
 
-			print(self.classe_nome, self.classe_reativacao, self.classe_codigo, self.classe_indicador, self.classe_subordinacao)
-
-
 			c.execute("insert into classe (classe_nome, classe_codigo, classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "')" )
 
 			banco.conexao.commit()
@@ -33,3 +30,41 @@ class Classe(object):
 			return "Classe cadastrada com sucesso"
 		except:
 			return "Ocorreu um errro na inserção do usuário"
+
+
+	def buscaTodasClasses(self):
+		banco = Banco()
+		lista = []
+		lista2 = []
+		i = 0
+
+		try:
+			c = banco.conexao.cursor()
+
+			c.execute("select * From classe")
+
+			#lista = (c.fetchall())
+
+			for linha in c:
+				self.idclasse = linha[0]
+				self.classe_nome = linha[1]
+				self.classe_codigo = linha[2]
+				self.classe_subordinacao = linha[3]
+				self.classe_regAbertura = linha[4]
+				self.classe_regDesativacao = linha[5]
+				self.classe_reativacao = linha[6]
+				self.classe_regMudancaNome = linha[7]
+				self.classe_regDeslocamento = linha[8]
+				self.classe_regExtincao = linha[9]
+				self.classe_indicador = linha[10]
+
+				lista.append(linha[2] + " " + linha[1])
+			
+
+			"""while i < len(lista):
+				print(lista)
+				i = i + 1"""
+
+			return lista
+		except:
+			return lista2	

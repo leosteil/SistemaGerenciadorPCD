@@ -106,7 +106,4 @@ class AddClass:
        	c.classe_regDeslocamento = self.entryRegDeslocamento.get()
        	c.classe_regExtincao = self.entryRegExtincao.get()
        	c.classe_indicador = self.entryIndicador.get()
-
-       	#print(classe_nome, classe_reativacao, classe_codigo, classe_indicador, classe_subordinacao)
-
        	self.lblmsg["text"] = c.insertClasse()

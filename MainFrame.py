@@ -1,5 +1,6 @@
 import tkinter as tk
 from AddClassFrame import AddClass
+from ShowClassesFrame import ShowClasses
 
 class MainView:
     def __init__(self, master):
@@ -10,20 +11,30 @@ class MainView:
         self.button1.pack()
         self.container1.pack()
 
-        self.container1 = tk.Frame(self.master)
-        self.button1 = tk.Button(self.container1, text = 'Remover Classe', width = 50, command = self.open_addClassFrame)
-        self.button1.pack()
-        self.container1.pack()
-
-
-        self.container1 = tk.Frame(self.master)
-        self.button2 = tk.Button(self.container1, text = "Importar", width = 50, command = self.open_addClassFrame)
+        self.container2 = tk.Frame(self.master)
+        self.button2 = tk.Button(self.container2, text = 'Remover Classe', width = 50, command = self.open_addClassFrame)
         self.button2.pack()
-        self.container1.pack()
+        self.container2.pack()
+
+
+        self.container3 = tk.Frame(self.master)
+        self.button3 = tk.Button(self.container3, text = "Importar", width = 50, command = self.open_addClassFrame)
+        self.button3.pack()
+        self.container3.pack()
+
+        self.container4 = tk.Frame(self.master)
+        self.button4 = tk.Button(self.container4, text = "Mostrar Classes", width = 50, command = self.open_showClassesFrame)
+        self.button4.pack()
+        self.container4.pack()
+
 
     def open_addClassFrame(self):   
         self.newWindow = tk.Toplevel(self.master)
         self.app = AddClass(self.newWindow)
+
+    def open_showClassesFrame(self):   
+        self.newWindow = tk.Toplevel(self.master)
+        self.app = ShowClasses(self.newWindow)
 
 
 root = tk.Tk()
