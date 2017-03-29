@@ -1,6 +1,7 @@
 import tkinter as tk
 from AddClassFrame import AddClass
 from ShowClassesFrame import ShowClasses
+from ExportClassFrame import ExportData
 
 class MainView:
     def __init__(self, master):
@@ -18,7 +19,7 @@ class MainView:
 
 
         self.container3 = tk.Frame(self.master)
-        self.button3 = tk.Button(self.container3, text = "Importar", width = 50, command = self.open_addClassFrame)
+        self.button3 = tk.Button(self.container3, text = "Exportar Dados Como CSV", width = 50, command = self.open_exportClass)
         self.button3.pack()
         self.container3.pack()
 
@@ -35,6 +36,10 @@ class MainView:
     def open_showClassesFrame(self):   
         self.newWindow = tk.Toplevel(self.master)
         self.app = ShowClasses(self.newWindow)
+
+    def open_exportClass(self):   
+        self.newWindow = tk.Toplevel(self.master)
+        self.app = ExportData(self.newWindow)
 
 
 root = tk.Tk()

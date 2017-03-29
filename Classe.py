@@ -34,36 +34,19 @@ class Classe(object):
 
 	def buscaTodasClasses(self):
 		banco = Banco()
+		classe = Classe()
 		lista = []
 		lista2 = []
-		i = 0
+
+		print("Hello World")
 
 		try:
 			c = banco.conexao.cursor()
 
 			c.execute("select * From classe")
 
-			#lista = (c.fetchall())
-
 			for linha in c:
-				self.idclasse = linha[0]
-				self.classe_nome = linha[1]
-				self.classe_codigo = linha[2]
-				self.classe_subordinacao = linha[3]
-				self.classe_regAbertura = linha[4]
-				self.classe_regDesativacao = linha[5]
-				self.classe_reativacao = linha[6]
-				self.classe_regMudancaNome = linha[7]
-				self.classe_regDeslocamento = linha[8]
-				self.classe_regExtincao = linha[9]
-				self.classe_indicador = linha[10]
-
-				lista.append(linha[2] + " " + linha[1])
-			
-
-			"""while i < len(lista):
-				print(lista)
-				i = i + 1"""
+				lista.append(linha[2] + " " + linha[1]) #manda apenas os conteúdos de codigo e nome para serem exibidos
 
 			return lista
 		except:

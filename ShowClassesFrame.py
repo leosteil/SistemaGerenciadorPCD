@@ -7,7 +7,6 @@ class ShowClasses:
         self.master = master
 
         c = Classe()
-        i = 0
         j = 0
         lista= []
         lista = c.buscaTodasClasses()
@@ -17,6 +16,8 @@ class ShowClasses:
 
         self.listbox1.insert(END, "Codigo " + "- Nome")
 
+        lista.sort()
+        
         while j < len(lista):
        	   self.listbox1.insert(END, lista[j])
            j = j + 1 
