@@ -32,21 +32,23 @@ class Classe(object):
 			return "Ocorreu um errro na inserção do usuário"
 
 
-	def buscaTodasClasses(self):
+	def buscaTodasClasses(self, tipo):
 		banco = Banco()
 		classe = Classe()
 		lista = []
 		lista2 = []
-
-		print("Hello World")
 
 		try:
 			c = banco.conexao.cursor()
 
 			c.execute("select * From classe")
 
-			for linha in c:
-				lista.append(linha[2] + " " + linha[1]) #manda apenas os conteúdos de codigo e nome para serem exibidos
+			if(tipo == 0):
+				for linha in c:
+					lista.append(linha[2] + " " + linha[1]) #manda apenas os conteúdos de codigo e nome para serem exibidos
+			else:
+				for linha in c:
+					lista.append(linha[2] + ", " + linha[1]+ ", " + linha[3]+ ", " + linha[4]+ ", " + linha[5]+ ", " + linha[6]+ ", " + linha[7]+ ", " + linha[8]+ ", " + linha[9]+ ", " + linha[10]) #manda apenas os conteúdos de codigo e nome para serem exibidos
 
 			return lista
 		except:
