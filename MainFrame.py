@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from ShowClassesFrame import ShowClasses
+from ShowDocumentosFrame import ShowDocumentos
 from ExportImportClassFrame import ExportData
 from AddClassDocFrame import AddFrame
 
@@ -28,16 +29,25 @@ class MainView:
         self.button4 = tk.Button(self.container4, text = "Mostrar Classes", width = 50, command = self.open_showClassesFrame)
         self.button4.pack()
         self.container4.pack()
+        
+        self.container5 = tk.Frame(self.master)
+        self.button5 = tk.Button(self.container5, text = "Mostrar Documentos", width = 50, command = self.open_showDocumentosFrame)
+        self.button5.pack()
+        self.container5.pack()
 
 
     def open_classDocFrame(self):   
         self.newWindow = tk.Toplevel(self.master)
         self.app = AddFrame(self.newWindow)
+    
+    def open_showDocumentosFrame(self):
+        self.newWindow = tk.Toplevel(self.master)
+        self.app = ShowDocumentos(self.newWindow)
 
     def open_showClassesFrame(self):   
         self.newWindow = tk.Toplevel(self.master)
         self.app = ShowClasses(self.newWindow)
-
+    
     def open_exportClass(self):   
         self.newWindow = tk.Toplevel(self.master)
         self.app = ExportData(self.newWindow)

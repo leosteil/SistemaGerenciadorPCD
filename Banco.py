@@ -21,6 +21,19 @@ class Banco():
                        classe_regDeslocamento text,
                        classe_regExtincao text,
                        classe_indicador text,
-                       classe_nivel int)""")
+                       classe_nivel int)
+                       """)
+          
+          c.execute("""create table if not exists documento (
+                       iddocumento integer primary key autoincrement ,
+                       documento_nome text,
+                       documento_codigo text,
+                       doc_guarda_fase_corrente text,
+                       doc_guarda_fase_intermediaria text,
+                       dest_final text,
+                       reg_alteracao text,
+                       obs text)
+                       """)
+          
           self.conexao.commit()
           c.close()

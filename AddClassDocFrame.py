@@ -16,7 +16,7 @@ class AddFrame:
 
 		self.container2 = tk.Frame(self.master)
 		self.btnExport = tk.Button(self.container2, text = "Classe", width = 20, command = self.open_AddClass)
-		self.btnImport = tk.Button(self.container2, text = "Documento", width = 20)
+		self.btnImport = tk.Button(self.container2, text = "Documento", width = 20, command = self.open_AddDoc)
 		self.container2.pack()
 		self.btnExport.pack()
 		self.btnImport.pack()
@@ -25,3 +25,7 @@ class AddFrame:
 	def open_AddClass(self):
 		self.newWindow = tk.Toplevel(self.master)  
 		self.app = AddClass(self.newWindow)
+		
+	def open_AddDoc(self):
+		self.newWindow = tk.Toplevel(self.master)
+		self.app = AddDoc(self.newWindow)
