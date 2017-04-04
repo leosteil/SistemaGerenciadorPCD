@@ -1,6 +1,3 @@
-codigo,nome,subordinação,regAbertura,regDesativação,reativação,regMudançaNome,regDeslocamento,regExtinção,regIndicador
-100, Ensino, , 10/10/10, , 10/10/10, , , , 
-110, Graduação, 100, 10/10/10, , 10/10/10, , , , 
-111, Estudo, 110, 10/10/10, , 10/10/10, , , , 
-111.1, Pós Graduação, 100, , , , , , , 
-200, Pesquisa, , 10/10/10, , 10/10/10, , , , 
+codigo,nome,subordinação,regAbertura,regDesativação,reativação,regMudançaNome,regDeslocamento,regExtinção,regIndicador, nivel
+700, Leonardo, , , , , , , , , 1, 
+8551, PEDRO, , , , , , , , , 3, 

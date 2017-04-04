@@ -26,17 +26,16 @@ class ExportData:
 		
 		j = 0
 		lista= []
-		lista = c.buscaTodasClasses(1)
-
-		lista.sort()
+		lista = c.buscaTodasClasses()
 
 		#f = open("teste.csv", "r")
 
 		conteudo = []
-		conteudo.append("codigo,nome,subordinação,regAbertura,regDesativação,reativação,regMudançaNome,regDeslocamento,regExtinção,regIndicador\n")
+		conteudo.append("codigo,nome,subordinação,regAbertura,regDesativação,reativação,regMudançaNome,regDeslocamento,regExtinção,regIndicador, nivel\n")
 
 		while j < len(lista):
-		   conteudo.append(lista[j] + "\n")
+		   l = lista[j]
+		   conteudo.append(l.classe_codigo+ ", " + l.classe_nome + ", " +  l.classe_subordinacao + ", " + l.classe_regAbertura + ", " + l.classe_regDesativacao+ ", " + l.classe_reativacao + ", " + l.classe_regMudancaNome + ", " + l.classe_regDeslocamento + ", " + l.classe_regExtincao + ", " + l.classe_indicador + ", " + str(l.classe_nivel) + ", " + "\n")
 		   j = j + 1 
 
 		c = open("teste.csv", "w")

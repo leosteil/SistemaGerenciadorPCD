@@ -20,6 +20,7 @@ class Banco():
                        classe_regMudancaNome text,
                        classe_regDeslocamento text,
                        classe_regExtincao text,
-                       classe_indicador text)""")
+                       classe_indicador text,
+                       classe_nivel int)""")
           self.conexao.commit()
           c.close()

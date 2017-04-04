@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+from tkinter import ttk
 from Classe import Classe
 
 class AddClass:
@@ -17,6 +18,16 @@ class AddClass:
         self.container2.pack()
         self.lblNome.pack(side=LEFT)
         self.entryNome.pack()
+
+        self.container14 = tk.Frame(self.master, pady = 5, padx = 80)
+        self.lblNivel = tk.Label(self.container14, text = "Nivel da Classe:", width = 25)
+        
+        valor = (1,2,3,4)
+        self.comboNivel = ttk.Combobox(self.container14, value = valor, width = 3)
+
+        self.container14.pack()
+        self.lblNivel.pack(side=LEFT)
+        self.comboNivel.pack()
 
         self.container3 = tk.Frame(self.master, pady = 5, padx = 80)
         self.lblCodigo = tk.Label(self.container3, text = "Código:", width = 25)
@@ -106,4 +117,5 @@ class AddClass:
        	c.classe_regDeslocamento = self.entryRegDeslocamento.get()
        	c.classe_regExtincao = self.entryRegExtincao.get()
        	c.classe_indicador = self.entryIndicador.get()
+        c.classe_nivel = self.comboNivel.get()
        	self.lblmsg["text"] = c.insertClasse()

@@ -1,7 +1,7 @@
 from Banco import Banco
 
 class Classe(object):
-	def __init__(self, idclasse = 0, classe_nome ="", classe_codigo = "", classe_subordinacao = "", classe_regAbertura = "", classe_regDesativacao = "", classe_reativacao = "", classe_regMudancaNome = "", classe_regDeslocamento = "", classe_regExtincao = "", classe_indicador = ""):
+	def __init__(self, idclasse = 0, classe_nome ="", classe_codigo = "", classe_subordinacao = "", classe_regAbertura = "", classe_regDesativacao = "", classe_reativacao = "", classe_regMudancaNome = "", classe_regDeslocamento = "", classe_regExtincao = "", classe_indicador = "", classe_nivel = ""):
 		
 		self.info = {}
 		self.idclasse = idclasse
@@ -15,6 +15,7 @@ class Classe(object):
 		self.classe_regDeslocamento = classe_regDeslocamento
 		self.classe_regExtincao = classe_regExtincao
 		self.classe_indicador = classe_indicador
+		self.classe_nivel = classe_nivel
 
 
 	def insertClasse(self):
@@ -22,34 +23,44 @@ class Classe(object):
 		try:
 			c = banco.conexao.cursor()
 
-			c.execute("insert into classe (classe_nome, classe_codigo, classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "')" )
+			c.execute("insert into classe (classe_nome, classe_codigo, classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador, classe_nivel) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "','" + self.classe_nivel + "')" )
 
 			banco.conexao.commit()
 			c.close()
 
 			return "Classe cadastrada com sucesso"
 		except:
-			return "Ocorreu um errro na inserção do usuário"
+			return "Ocorreu um erro na inserção do usuário"
 
 
-	def buscaTodasClasses(self, tipo):
+	def buscaTodasClasses(self):
 		banco = Banco()
-		classe = Classe()
+		j = 0
 		lista = []
 		lista2 = []
 
 		try:
-			c = banco.conexao.cursor()
+			con = banco.conexao.cursor()
+			con.execute("select * FROM classe")
 
-			c.execute("select * From classe")
 
-			if(tipo == 0):
-				for linha in c:
-					lista.append(linha[2] + " " + linha[1]) #manda apenas os conteúdos de codigo e nome para serem exibidos
-			else:
-				for linha in c:
-					lista.append(linha[2] + ", " + linha[1]+ ", " + linha[3]+ ", " + linha[4]+ ", " + linha[5]+ ", " + linha[6]+ ", " + linha[7]+ ", " + linha[8]+ ", " + linha[9]+ ", " + linha[10]) #manda apenas os conteúdos de codigo e nome para serem exibidos
+			for linha in con:
+				c = Classe()
+				c.idclasse = linha[0]
+				c.classe_nome = linha[1]
+				c.classe_codigo = linha[2]
+				c.classe_subordinacao = linha[3]
+				c.classe_regAbertura = linha[4]
+				c.classe_regDesativacao = linha[5]
+				c.classe_reativacao = linha[6]
+				c.classe_regMudancaNome = linha[7]
+				c.classe_regDeslocamento = linha[8]
+				c.classe_regExtincao = linha[9]
+				c.classe_indicador = linha[10]
+				c.classe_nivel = linha[11]
+
+				lista.append(c)
 
 			return lista
 		except:
-			return lista2	
+			return lista2
