@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk
 from Documento import Documento
 from Classe import Classe
+from datetime import date
 
 
 class AddDoc:

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from Classe import Classe
+from datetime import date
 
 class AddClass:
     def __init__(self, master):
@@ -39,7 +40,7 @@ class AddClass:
         self.entryCodigo.pack()
 
         self.container15 = tk.Frame(self.master, pady = 5, padx = 80)
-        self.lblFiliacao = tk.Label(self.container15, text = "Filiação:", width = 25)
+        self.lblFiliacao = tk.Label(self.container15, text = "Filiação/Subordinação:", width = 25)
         filiacao = Classe.buscaTodasClasses(self)
 
         filiacao2 = []
@@ -48,27 +49,30 @@ class AddClass:
         	filiacao2.append(filiacao[j].classe_codigo + ", " + filiacao[j].classe_nome)
         	j = j + 1
 
+        filiacao2.sort()
+
         self.comboFiliacao = ttk.Combobox(self.container15, value = filiacao2, width = 25)
         self.container15.pack()
         self.lblFiliacao.pack(side=LEFT)
         self.comboFiliacao.pack()
 
-        self.container4 = tk.Frame(self.master, pady = 5, padx = 80)
+        """self.container4 = tk.Frame(self.master, pady = 5, padx = 80)
         self.lblSubordinacao = tk.Label(self.container4, text = "Subordinação:", width = 25)
         self.entrySubordinacao = tk.Entry(self.container4)
         self.container4.pack()
         self.lblSubordinacao.pack(side=LEFT)
-        self.entrySubordinacao.pack()
+        self.entrySubordinacao.pack()"""
 
         self.container5 = tk.Frame(self.master, pady = 5, padx = 80)
         self.lblRegAbertura = tk.Label(self.container5, text = "Registro de abertura:", width = 25)
         self.entryRegAbertura = tk.Entry(self.container5)
+        self.entryRegAbertura.insert(0, date.today())
         self.container5.pack()
         self.lblRegAbertura.pack(side=LEFT)
         self.entryRegAbertura.pack()
 
 
-        self.container6 = tk.Frame(self.master, pady = 5, padx = 50)
+        """self.container6 = tk.Frame(self.master, pady = 5, padx = 50)
         self.lblRegDesativacao = tk.Label(self.container6, text = "Registro de desativação:", width = 25)
         self.entryRegDesativacao = tk.Entry(self.container6)
         self.container6.pack()
@@ -108,7 +112,7 @@ class AddClass:
         self.entryIndicador = tk.Entry(self.container11)
         self.container11.pack()
         self.lblIndicador.pack(side=LEFT)
-        self.entryIndicador.pack()
+        self.entryIndicador.pack()"""
 
         self.container12 = tk.Frame(self.master, pady = 4, padx = 80)
         self.btnSubmeter = tk.Button(self.container12, text = "Submmit", width = 12, command = self.submmit)
@@ -123,16 +127,23 @@ class AddClass:
 
     def submmit(self):
        	c = Classe()
+       	cAux = Classe()
 
        	c.classe_nome = self.entryNome.get()
        	c.classe_codigo = self.entryCodigo.get()
-       	c.classe_subordinacao = self.entrySubordinacao.get()
        	c.classe_regAbertura = self.entryRegAbertura.get()
-       	c.classe_regDesativacao = self.entryRegDesativacao.get()
-       	c.classe_reativacao = self.entryRegAtivacao.get()
-       	c.classe_regMudancaNome = self.entryRegMudancaNome.get()
-       	c.classe_regDeslocamento = self.entryRegDeslocamento.get()
-       	c.classe_regExtincao = self.entryRegExtincao.get()
-       	c.classe_indicador = self.entryIndicador.get()
-        c.classe_nivel = self.comboNivel.get()
+
+       	stringAux = self.comboFiliacao.get()
+       	x = stringAux.find(',')
+
+       	cAux = cAux.buscaClasse(stringAux[:x])
+
+       	print(cAux.classe_nome + "cAUX")
+
+       	c.id_classe_subordinacao = cAux.classe_codigo
+
+       	print(c.id_classe_subordinacao + "TESTE2")
+
+       	c.classe_nivel = self.comboNivel.get()
+
        	self.lblmsg["text"] = c.insertClasse()

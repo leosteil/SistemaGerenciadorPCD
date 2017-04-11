@@ -64,3 +64,39 @@ class Classe(object):
 			return lista
 		except:
 			return lista2
+
+	def buscaClasse(self, codClasse):
+		banco = Banco()
+		j = 0
+
+		print(codClasse)
+
+		query = "select * FROM classe WHERE classe_codigo = " + codClasse
+
+		print(query)
+
+		try:
+			con = banco.conexao.cursor()
+			con.execute(query)
+
+			for linha in con:
+				c = Classe()
+				c1 = Classe()
+				c.idclasse = linha[0]
+				c.classe_nome = linha[1]
+				c.classe_codigo = linha[2]
+				c.id_classe_subordinacao = linha[3]
+				c.classe_regAbertura = linha[4]
+				c.classe_regDesativacao = linha[5]
+				c.classe_reativacao = linha[6]
+				c.classe_regMudancaNome = linha[7]
+				c.classe_regDeslocamento = linha[8]
+				c.classe_regExtincao = linha[9]
+				c.classe_indicador = linha[10]
+				c.classe_nivel = linha[11]
+
+			print(c.classe_codigo + "TESTE")
+
+			return c
+		except:
+			return 

@@ -54,5 +54,6 @@ class MainView:
 
 
 root = tk.Tk()
+root.title("Sistema de Gerenciamento de PCD")
 MainView(root)
 root.mainloop()
