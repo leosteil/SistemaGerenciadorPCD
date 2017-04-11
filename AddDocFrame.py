@@ -2,11 +2,13 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from Documento import Documento
+from Classe import Classe
 
 
 class AddDoc:
 	def __init__(self, master):
 		self.master = master
+		j = 0
 		
 		self.container1 = tk.Frame(self.master, pady = 10)
 		self.lblCabecalho = tk.Label(self.container1, text = "Digite os dados abaixo", fg = "black", font = "Verdana 10 bold")
@@ -26,7 +28,25 @@ class AddDoc:
 		self.container3.pack()
 		self.lblCodigo.pack(side=LEFT)
 		self.entryCodigo.pack()
-		
+
+
+		self.container11 = tk.Frame(self.master, pady = 5, padx = 80)
+		self.lblFiliacao = tk.Label(self.container11, text = "Filiação:", width = 25)
+		filiacao = Classe.buscaTodasClasses(self) #para preencher combobox com todas as classes
+
+		filiacao2 = []
+
+		while j < len(filiacao):
+			filiacao2.append(filiacao[j].classe_codigo + ", " +filiacao[j].classe_nome)
+			j = j + 1
+			print(filiacao2)
+
+		self.comboFiliacao = ttk.Combobox(self.container11, value = filiacao2, width = 10)
+		self.container11.pack()
+		self.lblFiliacao.pack(side=LEFT)
+		self.comboFiliacao.pack()
+
+
 		self.container4 = tk.Frame(self.master, pady = 5, padx = 80)
 		self.lblg_fase_corrente = tk.Label(self.container4, text = "Prazo de Guarda na Fase Corrente:", width = 30)
 		self.entryG_fase_corrente = tk.Entry(self.container4)

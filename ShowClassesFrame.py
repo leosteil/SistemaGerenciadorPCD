@@ -8,13 +8,23 @@ class ShowClasses:
 
         c = Classe()
         j = 0
-        lista= []
+        i = 0
+        lista = []
+        lista2 = []
         lista = c.buscaTodasClasses()
+
+        while i < len(lista):
+            lista2.append(lista[i].classe_codigo)
+            i = i + 1
+
+
+        lista2.sort()
 
         self.container1 = tk.Frame(self.master, pady = 20, padx = 30)
         self.listbox1 = tk.Listbox(self.container1, width = 30)
 
         self.listbox1.insert(END, "Codigo " + "- Nome")
+
 
         while j < len(lista): 
        	    if(lista[j].classe_nivel == 1):
