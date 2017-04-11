@@ -7,6 +7,8 @@ class AddClass:
     def __init__(self, master):
         self.master = master
 
+        j = 0
+
         self.container1 = tk.Frame(self.master, pady = 10)
         self.lblCabecalho = tk.Label(self.container1, text = "Digite os dados abaixo", fg = "black", font = "Verdana 10 bold")
         self.lblCabecalho.pack()
@@ -35,6 +37,21 @@ class AddClass:
         self.container3.pack()
         self.lblCodigo.pack(side=LEFT)
         self.entryCodigo.pack()
+
+        self.container15 = tk.Frame(self.master, pady = 5, padx = 80)
+        self.lblFiliacao = tk.Label(self.container15, text = "Filiação:", width = 25)
+        filiacao = Classe.buscaTodasClasses(self)
+
+        filiacao2 = []
+
+        while j < len(filiacao):
+        	filiacao2.append(filiacao[j].classe_codigo + ", " + filiacao[j].classe_nome)
+        	j = j + 1
+
+        self.comboFiliacao = ttk.Combobox(self.container15, value = filiacao2, width = 25)
+        self.container15.pack()
+        self.lblFiliacao.pack(side=LEFT)
+        self.comboFiliacao.pack()
 
         self.container4 = tk.Frame(self.master, pady = 5, padx = 80)
         self.lblSubordinacao = tk.Label(self.container4, text = "Subordinação:", width = 25)

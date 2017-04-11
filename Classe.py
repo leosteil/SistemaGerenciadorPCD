@@ -1,13 +1,13 @@
 from Banco import Banco
 
 class Classe(object):
-	def __init__(self, idclasse = 0, classe_nome ="", classe_codigo = "", classe_subordinacao = "", classe_regAbertura = "", classe_regDesativacao = "", classe_reativacao = "", classe_regMudancaNome = "", classe_regDeslocamento = "", classe_regExtincao = "", classe_indicador = "", classe_nivel = ""):
+	def __init__(self, idclasse = 0, classe_nome ="", classe_codigo = "", id_classe_subordinacao = "", classe_regAbertura = "", classe_regDesativacao = "", classe_reativacao = "", classe_regMudancaNome = "", classe_regDeslocamento = "", classe_regExtincao = "", classe_indicador = "", classe_nivel = ""):
 		
 		self.info = {}
 		self.idclasse = idclasse
 		self.classe_nome = classe_nome
 		self.classe_codigo = classe_codigo
-		self.classe_subordinacao = classe_subordinacao
+		self.id_classe_subordinacao = id_classe_subordinacao
 		self.classe_regAbertura = classe_regAbertura
 		self.classe_regDesativacao = classe_regDesativacao
 		self.classe_reativacao = classe_reativacao
@@ -23,7 +23,7 @@ class Classe(object):
 		try:
 			c = banco.conexao.cursor()
 
-			c.execute("insert into classe (classe_nome, classe_codigo, classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador, classe_nivel) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "','" + self.classe_nivel + "')" )
+			c.execute("insert into classe (classe_nome, classe_codigo, id_classe_subordinacao, classe_regAbertura, classe_regDesativacao, classe_reativacao, classe_regMudancaNome, classe_regDeslocamento, classe_regExtincao, classe_indicador, classe_nivel) values('"+ self.classe_nome + "','" + self.classe_codigo + "','" + self.id_classe_subordinacao +"','" + self.classe_regAbertura + "','" + self.classe_regDesativacao + "','" + self.classe_reativacao + "','" + self.classe_regMudancaNome + "','" + self.classe_regDeslocamento + "','" + self.classe_regExtincao + "','" + self.classe_indicador + "','" + self.classe_nivel + "')" )
 
 			banco.conexao.commit()
 			c.close()
@@ -49,7 +49,7 @@ class Classe(object):
 				c.idclasse = linha[0]
 				c.classe_nome = linha[1]
 				c.classe_codigo = linha[2]
-				c.classe_subordinacao = linha[3]
+				c.id_classe_subordinacao = linha[3]
 				c.classe_regAbertura = linha[4]
 				c.classe_regDesativacao = linha[5]
 				c.classe_reativacao = linha[6]
