@@ -41,7 +41,7 @@ class Classe(object):
 
 		try:
 			con = banco.conexao.cursor()
-			con.execute("select * FROM classe")
+			con.execute("select * FROM classe order by CAST(classe_codigo as integer)")
 
 
 			for linha in con:
@@ -67,21 +67,16 @@ class Classe(object):
 
 	def buscaClasse(self, codClasse):
 		banco = Banco()
-		j = 0
-
-		print(codClasse)
+		c1 = Classe()
 
 		query = "select * FROM classe WHERE classe_codigo = " + codClasse
-
-		print(query)
 
 		try:
 			con = banco.conexao.cursor()
 			con.execute(query)
 
 			for linha in con:
-				c = Classe()
-				c1 = Classe()
+				c = Classe()				
 				c.idclasse = linha[0]
 				c.classe_nome = linha[1]
 				c.classe_codigo = linha[2]
@@ -99,4 +94,4 @@ class Classe(object):
 
 			return c
 		except:
-			return 
+			return c1

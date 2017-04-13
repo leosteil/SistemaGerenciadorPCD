@@ -138,9 +138,8 @@ class AddClass:
 
        	cAux = cAux.buscaClasse(stringAux[:x])
 
-       	print(cAux.classe_nome + "cAUX")
-
-       	c.id_classe_subordinacao = cAux.classe_codigo
+        if(len(cAux.classe_codigo) > 0):
+       	    c.id_classe_subordinacao = cAux.classe_codigo
 
        	print(c.id_classe_subordinacao + "TESTE2")
 

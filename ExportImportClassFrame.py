@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import *
 from Classe import Classe
+import csv, sqlite3
 
 class ExportData:
 	def __init__(self, master):
@@ -15,10 +16,15 @@ class ExportData:
 
 		self.container2 = tk.Frame(self.master)
 		self.btnExport = tk.Button(self.container2, text = "Exportar", command = self.export)
-		self.btnImport = tk.Button(self.container2, text = "Importar", command = self.importar)
+		self.entryCsvName = tk.Entry(self.container2)
+		self.btnImport = tk.Button(self.container2, text = "Importar", command = self.importar(self.entryCsvName.get()))
+		self.lblDigiteNome = tk.Label(self.container2, text = "Nome do arquivo a ser importado")
 		self.container2.pack()
 		self.btnExport.pack()
 		self.btnImport.pack()
+		self.lblDigiteNome.pack(side = LEFT)
+		self.entryCsvName.pack()
+
 
 
 	def export(self):
@@ -44,5 +50,10 @@ class ExportData:
 		c.close()
 
 
-	def importar(self):
-		pass
+	def importar(self, csvName):
+		banco = Banco()
+
+		with open("csvName") as f:
+
+		con = banco.conexao.cursor()
+
