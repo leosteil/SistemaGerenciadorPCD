@@ -105,4 +105,6 @@ class AddDoc:
 		d.dest_final = self.comboDestino.get()
 		d.reg_alteracao = self.entryReg_alteracao.get()
 		d.obs = self.entryObs.get()
+
+		
 		self.lblmsg["text"] = d.insertDocumento()
